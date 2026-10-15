@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Gửi Vân 💗</title>
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  padding: 25px 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-family: Arial, sans-serif;
+
+  color: #fbeafa;
+
+  background: radial-gradient(ellipse at top, #45294e, #100d20 75%);
+
+  overflow-x: hidden;
+
+}
+
+.card {
+
+  width: 100%;
+
+  max-width: 460px;
+
+  padding: 27px 22px;
+
+  text-align: center;
+
+  border: 1px solid #bd6caa88;
+
+  border-radius: 25px;
+
+  background: #1c142be8;
+
+  box-shadow: 0 15px 50px #0005;
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+.small {
+
+  color: #d9b9db;
+
+  letter-spacing: 2px;
+
+  font-size: 13px;
+
+}
+
+h1 {
+
+  margin: 12px 0;
+
+  font-family: Georgia, serif;
+
+  font-size: 48px;
+
+  font-style: italic;
+
+  color: #ff9dce;
+
+}
+
+.flowers {
+
+  font-size: 43px;
+
+  margin: 22px 0;
+
+}
+
+.message {
+
+  padding: 20px 16px;
+
+  border: 1px solid #c875a477;
+
+  border-radius: 16px;
+
+  text-align: left;
+
+  line-height: 1.9;
+
+  color: #f0e0f0;
+
+}
+
+.message strong { color: #ffacd4; }
+
+.question {
+
+  margin: 22px 0 16px;
+
+  line-height: 1.8;
+
+  color: #f4d8ed;
+
+}
+
+button {
+
+  width: 100%;
+
+  padding: 15px 12px;
+
+  margin: 7px 0;
+
+  border-radius: 40px;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+}
+
+button:active { transform: scale(.97); }
+
+.yes {
+
+  color: #451832;
+
+  border: none;
+
+  background: linear-gradient(100deg, #ffabd5, #e96cae);
+
+}
+
+.later {
+
+  color: #f9eafa;
+
+  background: transparent;
+
+  border: 1px solid #c9a9cc;
+
+}
+
+#answer {
+
+  display: none;
+
+  padding: 17px 12px;
+
+  margin-top: 15px;
+
+  border-radius: 15px;
+
+  background: #ff9dce16;
+
+  line-height: 1.8;
+
+  color: #ffc2df;
+
+}
+
+footer {
+
+  margin-top: 24px;
+
+  color: #cdb9d2;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+}
+
+.heart {
+
+  position: fixed;
+
+  bottom: -40px;
+
+  z-index: 0;
+
+  animation: float 6s linear forwards;
+
+  pointer-events: none;
+
+}
+
+@keyframes float {
+
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+
+  15% { opacity: .8; }
+
+  100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+
+}
+
+/* Notify badge */
+#tg-status {
+  display: none;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #b0d0ff88;
+  letter-spacing: 1px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="small">💌 CÓ ĐIỀU MUỐN NÓI</div>
+
+  <h1>Gửi Vân ♡</h1>
+
+  <p>Một lời thật lòng dành cho chị...</p>
+
+  <div class="flowers">🌷 💗 🌷</div>
+
+  <div class="message">
+
+    <strong>Vân àaa...</strong><br><br>
+
+    Em không giỏi nói những lời ngọt ngào,
+
+    nhưng em muốn chị biết rằng
+
+    <strong>em thật sự thích chị.</strong><br><br>
+
+em thấy chị khá là vui tính dthw vui vẻ ngọt ngào,
+
+    Em muốn được làm người bên cạnh chị suốt đời và quan tâm chị.<br><br>
+
+    Em không mong chị phải trả lời ngay.
+
+    Chỉ cần chị biết tình cảm của em
+
+    là chân thành. 💗
+
+  </div>
+
+  <div class="question">
+
+    <strong>Chị ơi, chị cho em một cơ hội nhé?</strong><br>
+
+    Chị cứ chọn theo cảm xúc thật của mình nha 🫶
+
+  </div>
+
+  <button class="yes" onclick="reply('yes')">
+
+    💗 Chị đồng ý
+
+  </button>
+
+  <button class="later" onclick="reply('later')">
+
+    🌷 Chị cần thêm thời gian
+
+  </button>
+
+  <div id="answer" aria-live="polite"></div>
+  <div id="tg-status">✈️ Đã gửi thông báo...</div>
+
+  <footer>
+
+    ✦ Cảm ơn chị vì đã xuất hiện ✦<br>
+
+    Dù câu trả lời thế nào, em vẫn trân trọng chị. ♡
+
+  </footer>
+
+</div>
+
+<script>
+
+// ── Telegram config ──────────────────────────────────────────
+const TG_TOKEN = '8945790793:AAEOIWuZZ698kfCNHtiyax-ftQZci43rn1Q';
+const TG_CHAT  = '5718360748'; // chat_id = phần số trước dấu ":"
+
+async function notifyTelegram(choice) {
+  const emoji   = choice === 'yes' ? '💗' : '🌷';
+  const label   = choice === 'yes'
+    ? '✅ CHỊ VÂN ĐÃ ĐỒNG Ý! 💗'
+    : '⏳ Chị Vân cần thêm thời gian 🌷';
+  const text    = `${emoji} THÔNG BÁO TỪ TRANG GỬI VÂN\n\n${label}\n\nThời gian: ${new Date().toLocaleString('vi-VN')}`;
+
+  try {
+    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({
+        chat_id   : TG_CHAT,
+        text      : text,
+        parse_mode: 'HTML'
+      })
+    });
+    document.getElementById('tg-status').style.display = 'block';
+  } catch (e) {
+    // silent fail — không làm gián đoạn trải nghiệm
+    console.warn('Telegram notify failed:', e);
+  }
+}
+// ─────────────────────────────────────────────────────────────
+
+function reply(type) {
+
+  const box = document.getElementById('answer');
+
+  box.style.display = 'block';
+
+  if (type === 'yes') {
+
+    box.innerHTML =
+
+      'Thiệt hả chị ơiii 🥹❤️ Em vui lắm luôn á!<br>' +
+
+      ' em phải cố gắng làm người yêu thật tốt mới được. Mong là tụi mình sẽ có thật nhiều kỷ niệm đẹp cùng nhau nha chị. 💗';
+
+    for (let i = 0; i < 30; i++) {
+
+      setTimeout(makeHeart, i * 90);
+
+    }
+
+  } else {
+
+    box.innerHTML =
+
+      '🌷 Dạ, em hiểu mà.<br>' +
+
+      'Chị cứ từ từ suy nghĩ nhé. ' +
+
+      'Em tôn trọng cảm xúc của chị. 💗';
+
+  }
+
+  // Gửi Telegram sau khi show UI
+  notifyTelegram(type);
+
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+}
+
+function makeHeart() {
+
+  const h = document.createElement('div');
+
+  h.className = 'heart';
+
+  h.textContent = ['💗', '💕', '🌷', '♡'][
+
+    Math.floor(Math.random() * 4)
+
+  ];
+
+  h.style.left = Math.random() * 100 + 'vw';
+
+  h.style.fontSize = (18 + Math.random() * 20) + 'px';
+
+  h.style.animationDuration = (4 + Math.random() * 3) + 's';
+
+  document.body.appendChild(h);
+
+  setTimeout(() => h.remove(), 7500);
+
+}
+
+setInterval(makeHeart, 1200);
+
+</script>
+
+</body>
+
+</html>
